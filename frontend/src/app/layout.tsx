@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { I18nProvider } from '@/lib/i18n';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { SiteChrome } from '@/components/SiteChrome';
 
 export const metadata: Metadata = {
   title: 'Sri Jagajjanani Temple',
@@ -15,9 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <I18nProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </I18nProvider>
       </body>
     </html>

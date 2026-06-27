@@ -61,6 +61,11 @@ body {
   @apply mx-auto mt-3 h-[3px] w-20 rounded-full bg-gold;
 }
 
+/* Console (admin/volunteer) form input — neutral, not the cream site style */
+.dash-input {
+  @apply block w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-200;
+}
+
 /* Scrolling news marquee */
 @keyframes marquee {
   0% { transform: translateX(0); }
