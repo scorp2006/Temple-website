@@ -1,0 +1,161 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Sri Jagajjanani Devasthanam" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Sri Jagajjanani Devasthanam" [ref=e5]
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - img [ref=e8]
+          - combobox "Select language" [ref=e11]:
+            - option "English" [selected]
+            - option "తెలుగు"
+            - option "हिन्दी"
+        - button "Toggle menu" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: 🕉 ఓం ఐం హ్రీం శ్రీం · World's 2nd Sri Jagajjanani Temple
+        - heading "Divine Grace. Eternal Protection." [level=1] [ref=e20]:
+          - text: Divine Grace.
+          - generic [ref=e21]: Eternal Protection.
+        - paragraph [ref=e22]: A sacred abode of the Divine Mother. Book poojas, seek darshan, and offer your devotion.
+        - generic [ref=e23]:
+          - link "Book a Pooja" [ref=e24] [cursor=pointer]:
+            - /url: /poojas
+            - text: Book a Pooja
+            - img [ref=e25]
+          - link "Live Darshan" [ref=e27] [cursor=pointer]:
+            - /url: /live
+            - img [ref=e28]
+            - text: Live Darshan
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - img [ref=e33]
+          - generic [ref=e39]:
+            - paragraph [ref=e40]: Morning Darshan
+            - paragraph [ref=e41]: 5:30 AM – 12:00 PM
+        - generic [ref=e42]:
+          - img [ref=e43]
+          - generic [ref=e45]:
+            - paragraph [ref=e46]: Suprabhata Seva
+            - paragraph [ref=e47]: 5:00 AM daily
+        - generic [ref=e48]:
+          - img [ref=e49]
+          - generic [ref=e51]:
+            - paragraph [ref=e52]: Evening Darshan
+            - paragraph [ref=e53]: 4:00 PM – 8:30 PM
+    - generic [ref=e55]:
+      - link "e-Pooja Sankalpa from home" [ref=e56] [cursor=pointer]:
+        - /url: /poojas
+        - img [ref=e58]
+        - heading "e-Pooja" [level=3] [ref=e60]
+        - paragraph [ref=e61]: Sankalpa from home
+      - link "Pooja & Darshanam Book your seva" [ref=e62] [cursor=pointer]:
+        - /url: /poojas
+        - img [ref=e64]
+        - heading "Pooja & Darshanam" [level=3] [ref=e69]
+        - paragraph [ref=e70]: Book your seva
+      - link "Annadanam Feed devotees" [ref=e71] [cursor=pointer]:
+        - /url: /donate
+        - img [ref=e73]
+        - heading "Annadanam" [level=3] [ref=e78]
+        - paragraph [ref=e79]: Feed devotees
+      - link "Gosala Support the cows" [ref=e80] [cursor=pointer]:
+        - /url: /donate
+        - img [ref=e82]
+        - heading "Gosala" [level=3] [ref=e86]
+        - paragraph [ref=e87]: Support the cows
+      - link "Online Booking Rooms & stay" [ref=e88] [cursor=pointer]:
+        - /url: /accommodation
+        - img [ref=e90]
+        - heading "Online Booking" [level=3] [ref=e93]
+        - paragraph [ref=e94]: Rooms & stay
+      - link "Volunteer Offer your seva" [ref=e95] [cursor=pointer]:
+        - /url: /donate
+        - img [ref=e97]
+        - heading "Volunteer" [level=3] [ref=e102]
+        - paragraph [ref=e103]: Offer your seva
+    - generic [ref=e105]:
+      - img "Temple sanctum" [ref=e107]
+      - generic [ref=e108]:
+        - paragraph [ref=e109]: About the Temple
+        - heading "A Sacred Abode of Divine Energy & Blessings" [level=2] [ref=e110]
+        - paragraph [ref=e112]: Sri Jagajjanani Temple is dedicated to the universal Mother — the source of all creation. For generations, devotees have gathered here to seek Her grace, perform sacred poojas, and find peace in Her presence.
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - paragraph [ref=e115]: 1000+
+            - paragraph [ref=e116]: Daily Devotees
+          - generic [ref=e117]:
+            - paragraph [ref=e118]: Daily
+            - paragraph [ref=e119]: Sevas & Poojas
+          - generic [ref=e120]:
+            - paragraph [ref=e121]: Divine
+            - paragraph [ref=e122]: Blessings
+        - link "Learn more" [ref=e123] [cursor=pointer]:
+          - /url: /about
+          - text: Learn more
+          - img [ref=e124]
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - img [ref=e129]
+        - generic [ref=e132]:
+          - paragraph [ref=e133]: Upcoming Festival
+          - heading "Jyeshta Purnima Celebrations" [level=3] [ref=e134]
+      - link "View Details" [ref=e135] [cursor=pointer]:
+        - /url: /news
+        - text: View Details
+        - img [ref=e136]
+    - generic [ref=e139]:
+      - heading "Photo Gallery" [level=2] [ref=e140]
+      - paragraph [ref=e142]: Glimpses of the divine at Sri Jagajjanani Temple
+  - contentinfo [ref=e150]:
+    - img "Temple gopuram, lions and the Divine Mother" [ref=e152]
+    - generic [ref=e153]:
+      - generic [ref=e154]:
+        - generic [ref=e156]: Sri Jagajjanani
+        - paragraph [ref=e157]: A sacred abode of the Divine Mother — the world's 2nd Sri Jagajjanani Temple, Nandyala District. May Her blessings be upon all devotees.
+      - generic [ref=e158]:
+        - heading "Services" [level=4] [ref=e159]
+        - list [ref=e160]:
+          - listitem [ref=e161]:
+            - link "Pooja & Darshanam" [ref=e162] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e163]:
+            - link "Accommodation" [ref=e164] [cursor=pointer]:
+              - /url: /accommodation
+          - listitem [ref=e165]:
+            - link "Donate / Annadanam" [ref=e166] [cursor=pointer]:
+              - /url: /donate
+          - listitem [ref=e167]:
+            - link "Live Darshan" [ref=e168] [cursor=pointer]:
+              - /url: /live
+      - generic [ref=e169]:
+        - heading "Quick Links" [level=4] [ref=e170]
+        - list [ref=e171]:
+          - listitem [ref=e172]:
+            - link "About the Temple" [ref=e173] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e174]:
+            - link "News & Events" [ref=e175] [cursor=pointer]:
+              - /url: /news
+          - listitem [ref=e176]:
+            - link "Admin Portal" [ref=e177] [cursor=pointer]:
+              - /url: /admin
+          - listitem [ref=e178]:
+            - link "Staff Portal" [ref=e179] [cursor=pointer]:
+              - /url: /staff
+      - generic [ref=e180]:
+        - heading "Contact" [level=4] [ref=e181]
+        - list [ref=e182]:
+          - listitem [ref=e183]:
+            - img [ref=e184]
+            - text: Nandyala District, Andhra Pradesh
+          - listitem [ref=e187]:
+            - img [ref=e188]
+            - text: +91 90000 00000
+          - listitem [ref=e190]:
+            - img [ref=e191]
+            - text: info@jagajjanani.org
+    - generic [ref=e194]: ॐ ऐं ह्रीं श्रीं श्री जगज्जनन्यै नमः · © 2026 Sri Jagajjanani Devasthanam

@@ -1,0 +1,273 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: ॐ ऐं ह्रीं श्रीं श्री जगज्जनन्यै नमः
+      - generic [ref=e6]: srijagajjananitemple@gmail.com · +91 99867 27123
+    - generic [ref=e7]:
+      - link "Sri Jagajjanani Devasthanam Sri Jagajjanani DEVASTHANAM" [ref=e8] [cursor=pointer]:
+        - /url: /
+        - img "Sri Jagajjanani Devasthanam" [ref=e9]
+        - generic [ref=e10]:
+          - text: Sri Jagajjanani
+          - generic [ref=e11]: DEVASTHANAM
+      - navigation [ref=e12]:
+        - link "Home" [ref=e13] [cursor=pointer]:
+          - /url: /
+        - link "Sevas & Darshanam" [ref=e14] [cursor=pointer]:
+          - /url: /poojas
+        - link "Donations" [ref=e15] [cursor=pointer]:
+          - /url: /donate
+        - link "Online Booking" [ref=e16] [cursor=pointer]:
+          - /url: /accommodation
+        - link "Media Room" [ref=e17] [cursor=pointer]:
+          - /url: /news
+        - link "Support" [ref=e18] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e19]:
+        - button "Search" [ref=e20] [cursor=pointer]:
+          - img [ref=e21]
+        - generic [ref=e24]:
+          - img [ref=e25]
+          - combobox "Select language" [ref=e28]:
+            - option "English" [selected]
+            - option "తెలుగు"
+            - option "हिन्दी"
+        - link "Donate" [ref=e29] [cursor=pointer]:
+          - /url: /donate
+  - main [ref=e30]:
+    - img "ప్రపంచములోనే 2వ శ్రీ జగజ్జననీ దేవాలయము — నంద్యాల జిల్లా" [ref=e32]
+    - generic [ref=e34]:
+      - generic [ref=e35]: Latest News
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: ✦
+          - text: Brahmotsavam festival dates announced — nine days of grand celebrations.
+        - generic [ref=e40]:
+          - generic [ref=e41]: ✦
+          - text: Online pooja booking is now live — receive an e-ticket with QR code.
+        - generic [ref=e42]:
+          - generic [ref=e43]: ✦
+          - text: Jyeshta Purnima celebrations this month. Devotees welcome.
+        - generic [ref=e44]:
+          - generic [ref=e45]: ✦
+          - text: Brahmotsavam festival dates announced — nine days of grand celebrations.
+        - generic [ref=e46]:
+          - generic [ref=e47]: ✦
+          - text: Online pooja booking is now live — receive an e-ticket with QR code.
+        - generic [ref=e48]:
+          - generic [ref=e49]: ✦
+          - text: Jyeshta Purnima celebrations this month. Devotees welcome.
+      - link "View All" [ref=e50] [cursor=pointer]:
+        - /url: /news
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - paragraph [ref=e54]: About
+        - heading "Sri Jagajjanani Ammavaru" [level=2] [ref=e55]
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: Sri Jagajjanani of Nandyal is the creator of the universe, in the early days of creation of the all-pervading world. Ammavaru spontaneously gave a prominence in this world. In Inda, in the Himalayan mountains of Jammu and Kashmir, an altitude of 16,500 feet above sea level.
+          - paragraph [ref=e58]: From there, she became known throughout the world as the all-pervading divine force behind creation. Devotees seek Her grace, perform sacred poojas, and find peace in Her divine presence.
+        - link "Read More" [ref=e59] [cursor=pointer]:
+          - /url: /about
+          - text: Read More
+          - img [ref=e60]
+      - img "Sri Jagajjanani Ammavaru" [ref=e63]
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - heading "e-Hundi" [level=3] [ref=e67]
+        - paragraph [ref=e68]: e-Hundi allows donations from people across the globe for the welfare of the temple. Devotees can offer donations via internet banking.
+        - link "Donate Now" [ref=e69] [cursor=pointer]:
+          - /url: /donate
+          - text: Donate Now
+          - img [ref=e70]
+      - generic [ref=e72]:
+        - heading "Annadanam" [level=3] [ref=e73]
+        - paragraph [ref=e74]: Offering one Annadanam is equal to donating 1000 elephants, a crore cows, gold and land that extends until one shore — fulfilling all duties of a family.
+        - link "Donate Now" [ref=e75] [cursor=pointer]:
+          - /url: /donate
+          - text: Donate Now
+          - img [ref=e76]
+      - generic [ref=e78]:
+        - heading "Gosala" [level=3] [ref=e79]
+        - paragraph [ref=e80]: During the Abhishekam of the deities in the temple and for other auspicious ceremonies, cow ghee and cow urine have great spiritual and purifying qualities.
+        - link "More Info" [ref=e81] [cursor=pointer]:
+          - /url: /donate
+          - text: More Info
+          - img [ref=e82]
+      - generic [ref=e84]:
+        - heading "Sevas & Darshanam" [level=3] [ref=e85]
+        - paragraph [ref=e86]: In a world filled with the essence of Jagajjanani, one can now wholeheartedly worship Sri Jagajjanani from anywhere in the world.
+        - link "Book Now" [ref=e87] [cursor=pointer]:
+          - /url: /poojas
+          - text: Book Now
+          - img [ref=e88]
+    - generic [ref=e91]:
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - img [ref=e95]
+          - heading "Jagajjanani TV" [level=2] [ref=e98]
+        - paragraph [ref=e99]: Jagajjanani TV is a 24×7 webcast devotional channel in Telugu which caters to the people of Hindu religion. It was launched on October 2022. It is from Sri Jagajjanani Devasthanam Product.
+        - paragraph [ref=e100]: It's South India's first Sri Jagajjanani devotional channel in Telugu — telecasting fiction and non-fiction programs.
+        - link "Watch Now" [ref=e101] [cursor=pointer]:
+          - /url: /live
+          - img [ref=e102]
+          - text: Watch Now
+      - iframe [ref=e105]:
+        - generic "YouTube Video Player" [ref=f5e3]:
+          - alert [ref=f5e4]:
+            - generic [ref=f5e5]:
+              - generic [ref=f5e6]:
+                - img
+              - generic [ref=f5e8]: This live stream recording is not available.
+            - link "Visit YouTube to search for more videos" [ref=f5e9] [cursor=pointer]:
+              - /url: https://www.youtube.com
+              - img
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - heading "Photo Gallery" [level=2] [ref=e109]
+        - paragraph [ref=e110]: The Beauty of Sacred Sri Jagajjanani Devasthanam
+      - link "View All" [ref=e111] [cursor=pointer]:
+        - /url: /news
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - img
+        - generic [ref=e122]:
+          - heading "Seva & Darshanam" [level=3] [ref=e123]
+          - link "View" [ref=e124] [cursor=pointer]:
+            - /url: /poojas
+            - text: View
+            - img [ref=e125]
+      - generic [ref=e127]:
+        - img
+        - generic [ref=e128]:
+          - heading "Main Offerings" [level=3] [ref=e129]
+          - link "View" [ref=e130] [cursor=pointer]:
+            - /url: /donate
+            - text: View
+            - img [ref=e131]
+  - contentinfo [ref=e133]:
+    - generic [ref=e135]:
+      - generic [ref=e136]:
+        - heading "About" [level=4] [ref=e137]
+        - list [ref=e138]:
+          - listitem [ref=e139]:
+            - link "The Goddess" [ref=e140] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e141]:
+            - link "The Temple" [ref=e142] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e143]:
+            - link "The Mahatyam" [ref=e144] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e145]:
+            - link "The Nirmaanam" [ref=e146] [cursor=pointer]:
+              - /url: /about
+      - generic [ref=e147]:
+        - heading "Sevas & Darshanam" [level=4] [ref=e148]
+        - list [ref=e149]:
+          - listitem [ref=e150]:
+            - link "Overview" [ref=e151] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e152]:
+            - link "Darshanam" [ref=e153] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e154]:
+            - link "Seva" [ref=e155] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e156]:
+            - link "Pooja" [ref=e157] [cursor=pointer]:
+              - /url: /poojas
+      - generic [ref=e158]:
+        - heading "Donations" [level=4] [ref=e159]
+        - list [ref=e160]:
+          - listitem [ref=e161]:
+            - link "Overview" [ref=e162] [cursor=pointer]:
+              - /url: /donate
+          - listitem [ref=e163]:
+            - link "e-Hundi" [ref=e164] [cursor=pointer]:
+              - /url: /donate
+          - listitem [ref=e165]:
+            - link "AnnaPrasadam Trust" [ref=e166] [cursor=pointer]:
+              - /url: /donate
+          - listitem [ref=e167]:
+            - link "GoSamrakshana Trust" [ref=e168] [cursor=pointer]:
+              - /url: /donate
+      - generic [ref=e169]:
+        - heading "Online Booking" [level=4] [ref=e170]
+        - list [ref=e171]:
+          - listitem [ref=e172]:
+            - link "Overview" [ref=e173] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e174]:
+            - link "Seva Booking" [ref=e175] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e176]:
+            - link "Darshanam Tickets" [ref=e177] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e178]:
+            - link "Donations" [ref=e179] [cursor=pointer]:
+              - /url: /donate
+      - generic [ref=e180]:
+        - heading "Media Room" [level=4] [ref=e181]
+        - list [ref=e182]:
+          - listitem [ref=e183]:
+            - link "Overview" [ref=e184] [cursor=pointer]:
+              - /url: /news
+          - listitem [ref=e185]:
+            - link "Media Kit" [ref=e186] [cursor=pointer]:
+              - /url: /news
+          - listitem [ref=e187]:
+            - link "Gallery" [ref=e188] [cursor=pointer]:
+              - /url: /news
+          - listitem [ref=e189]:
+            - link "Whats New" [ref=e190] [cursor=pointer]:
+              - /url: /news
+      - generic [ref=e191]:
+        - heading "Support" [level=4] [ref=e192]
+        - list [ref=e193]:
+          - listitem [ref=e194]:
+            - link "Overview" [ref=e195] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e196]:
+            - link "FAQs" [ref=e197] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e198]:
+            - link "Connectivity to Pilgrims" [ref=e199] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e200]:
+            - link "Contact Us" [ref=e201] [cursor=pointer]:
+              - /url: /about
+    - generic [ref=e202]:
+      - paragraph [ref=e203]:
+        - img [ref=e204]
+        - generic [ref=e207]:
+          - text: Sri Jagajjanani Ammavaru Devasthanam,
+          - text: Sri Durga Friends Unit, Sri Jagajjanani Nagar, Kurnool, Nandyala, AP – 518501
+      - paragraph [ref=e208]:
+        - generic [ref=e209]:
+          - img [ref=e210]
+          - text: srijagajjananitemple@gmail.com
+        - generic [ref=e213]:
+          - img [ref=e214]
+          - text: www.srijagajjananitemple.org
+      - paragraph [ref=e219]:
+        - generic [ref=e220]:
+          - img [ref=e221]
+          - text: +91 99867 27123
+        - generic [ref=e223]:
+          - img [ref=e224]
+          - text: +91 99633 64670
+    - generic [ref=e226]:
+      - generic [ref=e227]:
+        - text: Total Visitors
+        - generic [ref=e228]: 1,00,000
+      - generic [ref=e229]:
+        - text: Today's Visitors
+        - generic [ref=e230]: "72"
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - img [ref=e234]
+        - img [ref=e236]
+        - img [ref=e239]
+        - img [ref=e242]
+      - paragraph [ref=e244]: © 2022 Jagajjanani Devasthanam · Privacy Policy · Terms & Conditions
+      - paragraph [ref=e245]: Developed by AJS Innovations

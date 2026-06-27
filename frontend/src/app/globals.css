@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-serif: 'Georgia', serif;
+  --font-sans: system-ui, sans-serif;
+}
+
+body {
+  background-color: theme('colors.page');
+  color: theme('colors.ink');
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors min-h-[48px];
+  }
+  .btn-primary {
+    @apply btn bg-red-500 text-white hover:bg-red-600;
+  }
+  .btn-maroon {
+    @apply btn bg-maroon-600 text-cream hover:bg-maroon-700;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-maroon-900 hover:bg-gold-dark;
+  }
+  .btn-outline {
+    @apply btn border border-red-500 text-red-600 hover:bg-red-50;
+  }
+  /* Small pill button used inside the colored service cards */
+  .btn-card {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-red-600 hover:bg-white;
+  }
+  .card {
+    @apply rounded-xl2 bg-white shadow-card ring-1 ring-red-50 overflow-hidden;
+  }
+  .section {
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .label {
+    @apply block text-sm font-semibold text-maroon-800 mb-1;
+  }
+  .input {
+    @apply w-full rounded-lg border border-clay bg-white px-4 py-3 text-base text-ink outline-none focus:border-red-400 min-h-[48px];
+  }
+  .temple-divider {
+    height: 1px;
+    background-image: repeating-linear-gradient(
+      90deg,
+      theme('colors.gold.DEFAULT') 0,
+      theme('colors.gold.DEFAULT') 6px,
+      transparent 6px,
+      transparent 14px
+    );
+    opacity: 0.5;
+  }
+}
+
+.heading-ornament {
+  @apply mx-auto mt-3 h-[3px] w-20 rounded-full bg-gold;
+}
+
+/* Scrolling news marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}

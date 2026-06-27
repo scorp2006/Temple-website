@@ -1,0 +1,311 @@
+// Sri Jagajjanani Temple - Prisma schema
+// Database: PostgreSQL (with Prisma ORM)
+//
+// (The PRD originally specified SQL Server; the team moved to PostgreSQL since
+// no affordable cloud host offers SQL Server. Prisma made this a one-line swap.)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// NOTE on enums: these are modelled as plain String columns with the allowed
+// values defined and enforced in application code via src/constants/enums.ts.
+// (Originally done for SQL Server, which lacks enum support; kept as-is on
+// PostgreSQL so no model/import churn was needed.) Allowed values:
+//
+//   Role           : VISITOR | STAFF | ADMIN
+//   BookingStatus  : PENDING_PAYMENT | CONFIRMED | CANCELLED | EXPIRED | CHECKED_IN
+//   BookingChannel : ONLINE | SPOT
+//   PaymentStatus  : CREATED | PAID | FAILED | REFUNDED
+//   PaymentPurpose : POOJA_BOOKING | ACCOMMODATION | DONATION
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// 1. User - devotees, staff, admins
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String?  @unique
+  phone        String?  @unique
+  passwordHash String? // null for guest/visitor records created during booking
+  role         String   @default("VISITOR") // Role enum (see top of file)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  bookings              Booking[]
+  accommodationBookings AccommodationBooking[]
+  donations             Donation[]
+  newsAuthored          News[]
+  eventsCreated         Event[]                @relation("EventCreatedBy")
+  eventAssignments      EventStaff[]
+}
+
+// ---------------------------------------------------------------------------
+// 2. Pooja - a type of pooja offered
+// ---------------------------------------------------------------------------
+
+model Pooja {
+  id          String   @id @default(uuid())
+  name        String
+  description String?  @db.Text
+  imageUrl    String?
+  basePrice   Int // price in paise (₹1 = 100 paise) to avoid float issues
+  isSpecial   Boolean  @default(false) // special poojas listed separately (PRD)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  slots Slot[]
+}
+
+// ---------------------------------------------------------------------------
+// 3. Slot - a bookable time slot for a pooja (with capacity)
+// ---------------------------------------------------------------------------
+
+model Slot {
+  id        String   @id @default(uuid())
+  poojaId   String
+  pooja     Pooja    @relation(fields: [poojaId], references: [id], onDelete: Cascade)
+  startTime DateTime
+  endTime   DateTime
+  capacity  Int
+  booked    Int      @default(0) // confirmed + currently-held seats
+  price     Int // price for this slot (paise); defaults from pooja.basePrice
+  isOpen    Boolean  @default(true) // admin can close a slot
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings Booking[]
+
+  @@index([poojaId, startTime])
+}
+
+// ---------------------------------------------------------------------------
+// 4. Booking - a devotee's pooja booking
+// ---------------------------------------------------------------------------
+
+model Booking {
+  id        String         @id @default(uuid())
+  slotId    String
+  slot      Slot           @relation(fields: [slotId], references: [id])
+  userId    String?
+  user      User?          @relation(fields: [userId], references: [id])
+
+  // Devotee contact captured at booking time (works for guest bookings too)
+  devoteeName  String
+  devoteePhone String?
+  devoteeEmail String?
+  seats        Int           @default(1)
+
+  status   String @default("PENDING_PAYMENT") // BookingStatus enum
+  channel  String @default("ONLINE") // BookingChannel enum
+
+  // Concurrency-safety: the hold expires at this time if not paid.
+  holdExpiresAt DateTime?
+
+  // Idempotency: client sends a key so double-taps don't create duplicates.
+  idempotencyKey String? @unique
+
+  qrToken   String?  @unique // value embedded in the ticket QR for scanning
+  ticketUrl String? // generated PDF e-ticket URL (optional)
+  checkedInAt DateTime?
+
+  paymentId String?  @unique
+  payment   Payment? @relation(fields: [paymentId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([slotId, status])
+}
+
+// ---------------------------------------------------------------------------
+// 5. RoomType - accommodation category (room / dormitory)
+// ---------------------------------------------------------------------------
+
+model RoomType {
+  id            String   @id @default(uuid())
+  name          String // e.g. "AC Double Room", "Dormitory Bed"
+  description   String?  @db.Text
+  imageUrl      String?
+  pricePerNight Int // paise
+  capacity      Int // people per unit
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  rooms Room[]
+}
+
+// ---------------------------------------------------------------------------
+// 6. Room - an individual bookable unit of a RoomType
+// ---------------------------------------------------------------------------
+
+model Room {
+  id         String   @id @default(uuid())
+  roomTypeId String
+  roomType   RoomType @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+  number     String // e.g. "A-101"
+  isActive   Boolean  @default(true)
+
+  bookings AccommodationBooking[]
+
+  @@unique([roomTypeId, number])
+}
+
+// ---------------------------------------------------------------------------
+// 7. AccommodationBooking - a room reservation
+// ---------------------------------------------------------------------------
+
+model AccommodationBooking {
+  id     String @id @default(uuid())
+  roomId String
+  room   Room   @relation(fields: [roomId], references: [id])
+  userId String?
+  user   User?  @relation(fields: [userId], references: [id])
+
+  guestName  String
+  guestPhone String?
+  guestEmail String?
+  checkIn    DateTime
+  checkOut   DateTime
+  guests     Int           @default(1)
+
+  status        String   @default("PENDING_PAYMENT") // BookingStatus enum
+  holdExpiresAt DateTime?
+  idempotencyKey String?  @unique
+
+  paymentId String?  @unique
+  payment   Payment? @relation(fields: [paymentId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([roomId, checkIn, checkOut])
+}
+
+// ---------------------------------------------------------------------------
+// 8. Donation - a donation + donor card
+// ---------------------------------------------------------------------------
+
+model Donation {
+  id     String  @id @default(uuid())
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  donorName  String
+  donorPhone String?
+  donorEmail String?
+  panNumber  String? // for 80G receipts
+  amount     Int // paise
+  purpose    String? // e.g. "Annadanam", "General"
+
+  status         String  @default("CREATED") // PaymentStatus enum
+  donorCardUrl   String? // generated PDF donor card URL
+  qrToken        String?       @unique
+  idempotencyKey String?       @unique
+
+  paymentId String?  @unique
+  payment   Payment? @relation(fields: [paymentId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// 9. Payment - one shared payment record for all money flows
+// ---------------------------------------------------------------------------
+
+model Payment {
+  id       String @id @default(uuid())
+  purpose  String // PaymentPurpose enum
+  amount   Int // paise
+  currency String @default("INR")
+  status   String @default("CREATED") // PaymentStatus enum
+
+  // Razorpay (or mock) identifiers
+  gatewayOrderId   String? @unique
+  gatewayPaymentId String?
+  gatewaySignature String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  booking              Booking?
+  accommodationBooking AccommodationBooking?
+  donation             Donation?
+}
+
+// ---------------------------------------------------------------------------
+// 10. News - admin-managed announcements
+// ---------------------------------------------------------------------------
+
+model News {
+  id          String   @id @default(uuid())
+  title       String
+  body        String   @db.Text
+  imageUrl    String?
+  isPublished Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isPublished, publishedAt])
+}
+
+// ---------------------------------------------------------------------------
+// 11. Event - events created by admin, staffed by staff
+// ---------------------------------------------------------------------------
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String?  @db.Text
+  startTime   DateTime
+  endTime     DateTime
+  location    String?
+  createdById String?
+  createdBy   User?    @relation("EventCreatedBy", fields: [createdById], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  staff EventStaff[]
+}
+
+// ---------------------------------------------------------------------------
+// 12. EventStaff - join table: which staff are assigned to which event
+// ---------------------------------------------------------------------------
+
+model EventStaff {
+  id      String @id @default(uuid())
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  userId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  assignedAt DateTime @default(now())
+
+  @@unique([eventId, userId])
+}
+
+// ---------------------------------------------------------------------------
+// 13. LiveStream - the configurable LiveTV embed
+// ---------------------------------------------------------------------------
+
+model LiveStream {
+  id        String   @id @default(uuid())
+  title     String   @default("Live Darshan")
+  embedUrl  String // YouTube live embed URL
+  isVisible Boolean  @default(true)
+  updatedAt DateTime @updatedAt
+}

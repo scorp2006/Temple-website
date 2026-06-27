@@ -1,0 +1,195 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e5]:
+      - link "Jagajjanani TV" [ref=e6] [cursor=pointer]:
+        - /url: /live
+        - img [ref=e7]
+        - text: Jagajjanani TV
+      - combobox "Language" [ref=e10] [cursor=pointer]:
+        - option "English" [selected]
+        - option "తెలుగు"
+        - option "हिन्दी"
+      - link "Sign In / Sign Up" [ref=e11] [cursor=pointer]:
+        - /url: /login
+        - img [ref=e12]
+        - text: Sign In / Sign Up
+    - generic [ref=e16]:
+      - link "Sri Jagajjanani Ammavarla Devasthanam Sri Jagajjanani Ammavarla Devasthanam" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img "Sri Jagajjanani Ammavarla Devasthanam" [ref=e18]
+        - generic [ref=e19]:
+          - text: Sri Jagajjanani
+          - text: Ammavarla
+          - text: Devasthanam
+      - navigation [ref=e20]:
+        - link "About" [ref=e21] [cursor=pointer]:
+          - /url: /about
+        - link "Sevas & Darshanam" [ref=e22] [cursor=pointer]:
+          - /url: /poojas
+        - link "Donations" [ref=e23] [cursor=pointer]:
+          - /url: /donate
+        - link "Online Bookings" [ref=e24] [cursor=pointer]:
+          - /url: /accommodation
+        - link "Media Room" [ref=e25] [cursor=pointer]:
+          - /url: /news
+        - link "Support" [ref=e26] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e27]:
+        - link "Volunteer" [ref=e28] [cursor=pointer]:
+          - /url: /donate
+          - img [ref=e29]
+          - text: Volunteer
+        - button "Search" [ref=e31] [cursor=pointer]:
+          - img [ref=e32]
+        - link "Donate" [ref=e35] [cursor=pointer]:
+          - /url: /donate
+  - main [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - img [ref=e39]
+        - generic [ref=e41]: Preview mode. This is a UI walkthrough with sample data — backend integration is in progress. Buttons show the intended flow.
+      - generic [ref=e42]:
+        - heading "Volunteer Portal" [level=1] [ref=e43]
+        - button "Logout" [ref=e44] [cursor=pointer]:
+          - img [ref=e45]
+          - text: Logout
+      - generic [ref=e48]:
+        - button "Scan Ticket" [ref=e49] [cursor=pointer]:
+          - img [ref=e50]
+          - text: Scan Ticket
+        - button "Spot Booking" [ref=e55] [cursor=pointer]:
+          - img [ref=e56]
+          - text: Spot Booking
+      - generic [ref=e58]:
+        - heading "Scan / Verify Ticket" [level=2] [ref=e59]
+        - paragraph [ref=e60]: Enter or scan the QR token from the devotee's e-ticket. (In production, a camera scanner via html5-qrcode fills this automatically.)
+        - generic [ref=e61]:
+          - textbox "TKT_xxxxxxxx" [ref=e62]
+          - button "Verify" [ref=e63] [cursor=pointer]
+  - contentinfo [ref=e64]:
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - heading "About" [level=4] [ref=e68]
+        - list [ref=e69]:
+          - listitem [ref=e70]:
+            - link "The Goddess" [ref=e71] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e72]:
+            - link "The Temple" [ref=e73] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e74]:
+            - link "The Mahatyam" [ref=e75] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e76]:
+            - link "The Nirmaanam" [ref=e77] [cursor=pointer]:
+              - /url: /about
+      - generic [ref=e78]:
+        - heading "Sevas & Darshanam" [level=4] [ref=e79]
+        - list [ref=e80]:
+          - listitem [ref=e81]:
+            - link "Overview" [ref=e82] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e83]:
+            - link "Darshanam" [ref=e84] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e85]:
+            - link "Seva" [ref=e86] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e87]:
+            - link "Pooja" [ref=e88] [cursor=pointer]:
+              - /url: /poojas
+      - generic [ref=e89]:
+        - heading "Donations" [level=4] [ref=e90]
+        - list [ref=e91]:
+          - listitem [ref=e92]:
+            - link "Overview" [ref=e93] [cursor=pointer]:
+              - /url: /donate
+          - listitem [ref=e94]:
+            - link "e-Hundi" [ref=e95] [cursor=pointer]:
+              - /url: /donate
+          - listitem [ref=e96]:
+            - link "AnnaPrasadam Trust" [ref=e97] [cursor=pointer]:
+              - /url: /donate
+          - listitem [ref=e98]:
+            - link "GoSamrakshana Trust" [ref=e99] [cursor=pointer]:
+              - /url: /donate
+      - generic [ref=e100]:
+        - heading "Online Booking" [level=4] [ref=e101]
+        - list [ref=e102]:
+          - listitem [ref=e103]:
+            - link "Overview" [ref=e104] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e105]:
+            - link "Seva Booking" [ref=e106] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e107]:
+            - link "Darshanam Tickets" [ref=e108] [cursor=pointer]:
+              - /url: /poojas
+          - listitem [ref=e109]:
+            - link "Donations" [ref=e110] [cursor=pointer]:
+              - /url: /donate
+      - generic [ref=e111]:
+        - heading "Media Room" [level=4] [ref=e112]
+        - list [ref=e113]:
+          - listitem [ref=e114]:
+            - link "Overview" [ref=e115] [cursor=pointer]:
+              - /url: /news
+          - listitem [ref=e116]:
+            - link "Media Kit" [ref=e117] [cursor=pointer]:
+              - /url: /news
+          - listitem [ref=e118]:
+            - link "Gallery" [ref=e119] [cursor=pointer]:
+              - /url: /news
+          - listitem [ref=e120]:
+            - link "Whats New" [ref=e121] [cursor=pointer]:
+              - /url: /news
+      - generic [ref=e122]:
+        - heading "Support" [level=4] [ref=e123]
+        - list [ref=e124]:
+          - listitem [ref=e125]:
+            - link "Overview" [ref=e126] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e127]:
+            - link "FAQs" [ref=e128] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e129]:
+            - link "Connectivity to Pilgrims" [ref=e130] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e131]:
+            - link "Contact Us" [ref=e132] [cursor=pointer]:
+              - /url: /about
+    - generic [ref=e133]:
+      - paragraph [ref=e134]:
+        - img [ref=e135]
+        - generic [ref=e138]:
+          - text: Sri Jagajjanani Ammavaru Devasthanam,
+          - text: Sri Durga Friends Unit, Sri Jagajjanani Nagar, Kurnool, Nandyala, AP – 518501
+      - paragraph [ref=e139]:
+        - generic [ref=e140]:
+          - img [ref=e141]
+          - text: srijagajjananitemple@gmail.com
+        - generic [ref=e144]:
+          - img [ref=e145]
+          - text: www.srijagajjananitemple.org
+      - paragraph [ref=e150]:
+        - generic [ref=e151]:
+          - img [ref=e152]
+          - text: +91 99867 27123
+        - generic [ref=e154]:
+          - img [ref=e155]
+          - text: +91 99633 64670
+    - generic [ref=e157]:
+      - generic [ref=e158]:
+        - text: Total Visitors
+        - generic [ref=e159]: 1,00,000
+      - generic [ref=e160]:
+        - text: Today's Visitors
+        - generic [ref=e161]: "72"
+    - generic [ref=e163]:
+      - generic [ref=e164]:
+        - img [ref=e165]
+        - img [ref=e167]
+        - img [ref=e170]
+        - img [ref=e173]
+      - paragraph [ref=e175]: © 2022 Jagajjanani Devasthanam · Privacy Policy · Terms & Conditions
+      - paragraph [ref=e176]: Developed by AJS Innovations

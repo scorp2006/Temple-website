@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Builds
+dist/
+.next/
+out/
+
+# Env / secrets
+.env
+.env*.local
+*.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Prisma local
+*.db
+
+# Misc working files (not part of the app)
+refimages/
+prd_text.txt
+*.tmp
