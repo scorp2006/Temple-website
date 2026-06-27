@@ -15,8 +15,11 @@ services:
     runtime: node
     plan: free
     rootDir: backend
-    # --include=dev ensures ts-node (used by the seed) is available during build
-    buildCommand: npm install --include=dev && npx prisma generate && npm run build && npx prisma migrate deploy && npm run seed
+    # --include=dev ensures ts-node (used by the seed) is available during build.
+    # `prisma db push` creates tables straight from schema.prisma (no migration
+    # files needed for a first deploy); swap to `migrate deploy` later if you
+    # start versioning migrations.
+    buildCommand: npm install --include=dev && npx prisma generate && npm run build && npx prisma db push --accept-data-loss && npm run seed
     startCommand: npm run start
     healthCheckPath: /api/health
     envVars:
