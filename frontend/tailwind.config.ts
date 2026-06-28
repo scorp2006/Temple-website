@@ -5,9 +5,26 @@ import type { Config } from 'tailwindcss';
 // maroon + turmeric gold accents.
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
+        // Dark-theme palette — deep sacred dark (faint warm tint, not brown).
+        night: {
+          950: '#080605', // deepest base
+          900: '#0D0B09', // base background
+          800: '#141210', // raised surface
+          700: '#1C1916', // glass surface tint
+          600: '#2A2520', // hairline / border base
+        },
+        // Dark accent — solid metallic gold on the near-black base.
+        sacredgold: {
+          DEFAULT: '#D9A93B',
+          light: '#E9C46A', // brightest, for text on dark
+          mid: '#D9A93B',
+          deep: '#C99A3B',
+        },
+        parchment: '#EDE4D3', // warm cream text on dark
         // Red ramp built around the client's exact primary red #B21A1A
         red: {
           50: '#F7DCDC',

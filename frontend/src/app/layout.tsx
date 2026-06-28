@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Barlow } from 'next/font/google';
 import './globals.css';
 import { I18nProvider } from '@/lib/i18n';
+import { ThemeProvider, themeInitScript } from '@/lib/theme';
 import { SiteChrome } from '@/components/SiteChrome';
 
 // Barlow — used for section headings (e.g. "Photo Gallery") per the Figma design.
@@ -20,11 +21,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className={`${barlow.variable} flex min-h-screen flex-col font-sans antialiased`}>
-        <I18nProvider>
-          <SiteChrome>{children}</SiteChrome>
-        </I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>
+            <SiteChrome>{children}</SiteChrome>
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

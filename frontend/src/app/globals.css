@@ -12,6 +12,34 @@ body {
   color: theme('colors.ink');
 }
 
+/* ---------- Dark theme (warm sacred dark + metallic gold) ---------- */
+html.dark body {
+  background-color: theme('colors.night.900');
+  color: theme('colors.parchment');
+}
+
+@layer components {
+  /* Solid gold text (headings/accents) */
+  .gold-text {
+    color: #D9A93B;
+  }
+  /* Solid gold fill (buttons/badges) */
+  .gold-fill {
+    background-color: #D9A93B;
+    color: #2A1E10;
+  }
+  /* Dark translucent glass surface — no border, soft depth only */
+  .glass-dark {
+    background-color: rgba(20, 18, 16, 0.55);
+    box-shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+  }
+  /* Soft radial gold glow (place behind hero / headings) */
+  .gold-glow {
+    background: radial-gradient(ellipse at center, rgba(217, 169, 59, 0.22) 0%, rgba(217, 169, 59, 0) 70%);
+  }
+}
+
 @layer components {
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors min-h-[48px];
