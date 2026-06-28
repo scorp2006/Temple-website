@@ -4,52 +4,58 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Play, Tv } from 'lucide-react';
 
-// 4 service cards — gradient tiles (light red -> deep red), matching Figma
+// 4 service cards: four solid colours forming a peach -> deep-red gradient
+// across the row (per the Figma "About" section). The first (lightest) card uses
+// dark text + a maroon icon; the other three use white text + white icons.
 const services = [
   {
     title: 'e-Hundi',
-    desc: 'e-Hundi allows donations from people across the globe for the welfare of the temple. Devotees can offer donations via internet banking.',
+    desc: 'e-Hundi allows donations from people across the globe for the welfare of the sacred Sri Jagajjanani Ammavarla Devasthanam. Devotees can offer their donations via internet banking.',
     cta: 'Donate Now',
     href: '/donate',
-    grad: 'from-red-50 to-red-200',
+    icon: '/images/svc-ehundi.svg',
+    bg: '#FFE6DE',
+    dark: true, // dark text + maroon icon on the light card
   },
   {
-    title: 'Annadanam',
-    desc: 'Offering one Annadanam is equal to donating 1000 elephants, a crore cows, gold and land that extends until one shore — fulfilling all duties of a family.',
+    title: 'Annadhanam',
+    desc: 'Offering one Annadhanam is equals to donating 1000 elephants, a crore cows, gold and land that extends until seashore; fulfilling all duties of a family.',
     cta: 'Donate Now',
     href: '/donate',
-    grad: 'from-red-200 to-red-400',
+    icon: '/images/svc-annadanam.svg',
+    bg: '#FF7045',
+    dark: false,
   },
   {
-    title: 'Gosala',
-    desc: 'During the Abhishekam of the deities in the temple and for other auspicious ceremonies, cow ghee and cow urine have great spiritual and purifying qualities.',
+    title: 'Goshala',
+    desc: 'During the Abhishek of the deities in the temple and for other auspicious ceremonies, the shastras have enjoined the use of cow dung and cow urine, as their spiritual, medical and purifying qualities are greatly beneficial.',
     cta: 'More Info',
     href: '/donate',
-    grad: 'from-red-400 to-red-600',
+    icon: '/images/svc-goshala.svg',
+    bg: '#E43535',
+    dark: false,
   },
   {
     title: 'Sevas & Darshanam',
-    desc: 'In a world filled with the essence of Jagajjanani, one can now wholeheartedly worship Sri Jagajjanani from anywhere in the world.',
+    desc: 'In a world, that’s filled with the essence of Jagajjanani, one can now wholeheartedly worship Sri Jagajjanani from anywhere in the world.',
     cta: 'Book Now',
     href: '/poojas',
-    grad: 'from-red-600 to-maroon-700',
+    icon: '/images/svc-seva.svg',
+    bg: '#B21A1A',
+    dark: false,
   },
 ];
 
 const gallery = [
   // Mosaic spans apply only on sm+ ; mobile uses a clean uniform 2-col grid.
+  // Layout (per Figma): tall image on the left, a 2x2 cluster, plus a tall image
+  // on the right. The old hero-banner tile was removed (it duplicated the hero).
   { src: '/images/gopuram-dusk.jpg', span: 'sm:row-span-2' },
   { src: '/images/sanctum.jpg', span: '' },
   { src: '/images/temple-building.jpg', span: '' },
-  { src: '/images/deity.png', span: '' },
-  { src: '/images/lion.jpg', span: '' },
-  { src: '/images/hero-banner.jpg', span: 'sm:col-span-2' },
-];
-
-const news = [
-  'Brahmotsavam festival dates announced — nine days of grand celebrations.',
-  'Online pooja booking is now live — receive an e-ticket with QR code.',
-  'Jyeshta Purnima celebrations this month. Devotees welcome.',
+  { src: '/images/gallery-7.png', span: 'sm:row-span-2' },
+  { src: '/images/gallery-8.png', span: '' },
+  { src: '/images/gallery-9.png', span: '' },
 ];
 
 export default function HomePage() {
@@ -61,185 +67,306 @@ export default function HomePage() {
       <section className="relative bg-maroon-800">
         <Image
           src="/images/hero-banner.jpg"
-          alt="ప్రపంచములోనే 2వ శ్రీ జగజ్జననీ దేవాలయము — నంద్యాల జిల్లా"
+          alt="ప్రపంచములోనే 2వ శ్రీ జగజ్జననీ దేవాలయము, నంద్యాల జిల్లా"
           width={1920}
           height={620}
           priority
-          className="mx-auto h-auto w-full object-contain sm:h-[42vw] sm:max-h-[620px] sm:object-cover"
+          className="mx-auto h-auto w-full object-contain sm:h-[34vw] sm:max-h-[540px] sm:object-cover"
         />
       </section>
 
-      {/* ---------------- Latest News ticker ---------------- */}
-      <section className="bg-maroon-700 text-cream">
-        <div className="section flex items-center gap-4 py-2.5">
-          <span className="shrink-0 rounded-full bg-red-500 px-3 py-1 text-xs font-bold uppercase tracking-wide">
-            Latest News
+      {/* ---------------- Temple News bar ---------------- */}
+      <section className="border-b border-red-100 bg-white">
+        <div className="section flex items-center gap-5 py-3">
+          <span className="flex shrink-0 items-center gap-5 font-barlow text-base font-medium text-ink/80">
+            Temple News
+            <span className="h-6 w-px bg-red-200" aria-hidden />
           </span>
-          <div className="relative flex-1 overflow-hidden">
-            <div className="flex w-max animate-marquee gap-12 whitespace-nowrap text-sm">
-              {[...news, ...news].map((n, i) => (
-                <span key={i} className="flex items-center gap-2">
-                  <span className="text-gold-light">✦</span> {n}
-                </span>
-              ))}
-            </div>
-          </div>
-          <Link href="/news" className="hidden shrink-0 btn-gold px-4 py-1.5 text-sm sm:inline-flex">
-            View All
+          <p className="flex-1 truncate text-sm text-red-600 sm:text-[15px]">
+            Welcome to Sri Jagajjanani Ammavarala Devasthanam. Please use this portal to know about
+            temple and book tickets for sevas and darshanam.
+          </p>
+          <Link
+            href="/news"
+            className="hidden shrink-0 items-center gap-1.5 rounded-full bg-red-600 px-5 py-2 text-sm font-semibold text-white hover:bg-red-700 sm:inline-flex"
+          >
+            View All <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
 
-      {/* ---------------- About ---------------- */}
-      <section className="section relative py-16">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-gold-dark">About</p>
-            <h2 className="mt-1 font-serif text-3xl font-bold text-red-500 sm:text-4xl">
-              Sri Jagajjanani Ammavaru
-            </h2>
-            <div className="mt-4 space-y-4 leading-relaxed text-ink/80">
-              <p>
-                Sri Jagajjanani of Nandyal is the creator of the universe, in the early days
-                of creation of the all-pervading world. Ammavaru spontaneously gave a
-                prominence in this world. In Inda, in the Himalayan mountains of Jammu and
-                Kashmir, an altitude of 16,500 feet above sea level.
-              </p>
-              <p>
-                From there, she became known throughout the world as the all-pervading divine
-                force behind creation. Devotees seek Her grace, perform sacred poojas, and find
-                peace in Her divine presence.
-              </p>
-            </div>
-            <Link href="/about" className="btn-primary mt-6">
-              Read More <ArrowRight className="h-5 w-5" />
-            </Link>
-          </div>
-
-          {/* Deity line-art illustration */}
-          <div className="flex justify-center lg:justify-end">
-            <Image
-              src="/images/deity-lineart.png"
-              alt="Sri Jagajjanani Ammavaru"
-              width={420}
-              height={460}
-              className="max-h-[420px] w-auto opacity-90"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- Service cards ---------------- */}
-      <section className="section pb-16">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className={`flex flex-col rounded-xl2 bg-gradient-to-b ${s.grad} p-6 shadow-card`}
-            >
-              <h3 className="font-serif text-xl font-bold text-maroon-900">{s.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-maroon-900/80">{s.desc}</p>
-              <Link href={s.href} className="btn-card mt-5 self-start">
-                {s.cta} <ArrowRight className="h-4 w-4" />
+      {/* ---------------- About + service cards ----------------
+          One shared padded container so the About block and the 4-card row align
+          and neither sticks to the screen edges. */}
+      <section className="bg-white pb-16">
+        <div className="mx-auto w-full max-w-[1500px] px-6 sm:px-10 lg:px-16">
+          {/* About: text on the left, goddess + lion line-art on the right */}
+          <div className="grid items-center gap-10 pt-16 lg:grid-cols-2">
+            <div>
+              <p className="font-barlow text-lg font-semibold text-red-500">About</p>
+              <h2 className="mt-1 font-barlow text-3xl font-semibold text-red-600 sm:text-[2.6rem] sm:leading-tight">
+                Sri Jagajjanani Ammavaru
+              </h2>
+              <div className="mt-5 max-w-xl space-y-5 font-barlow leading-relaxed text-ink/80">
+                <p>
+                  Sri Jagajjanani of Nandyal is the creator of the universe. In the early days of
+                  creation, Ammavaru manifested herself in the Himalayan mountains of Jammu and
+                  Kashmir, India, at an altitude of 19,500 feet above sea level. From there, she
+                  became known throughout the world as the all-pervading divine force behind creation.
+                </p>
+                <p className="text-sm text-ink/70">
+                  Lake Manasarovar was located close to the temple. Our mythological texts and Vedas
+                  state that all three deities bathed in this lake during Brahma Muhurta and visited
+                  the Goddess.
+                </p>
+              </div>
+              <Link
+                href="/about"
+                className="mt-7 inline-flex items-center gap-2 rounded-full bg-red-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-700"
+              >
+                Read More <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-          ))}
+
+            {/* goddess + lion line-art illustration */}
+            <div className="flex justify-center lg:justify-end">
+              <img
+                src="/images/about-goddess-lion.png"
+                alt="Sri Jagajjanani Ammavaru with the divine lion"
+                className="h-auto w-full max-w-[460px] object-contain"
+              />
+            </div>
+          </div>
+
+          {/* 4 service cards: aligned with the About block above, with rounded
+              corners. peach -> deep-red across the row; descriptions line-clamped
+              so the cards stay compact and even. */}
+          <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
+            {services.map((s) => (
+              <div
+                key={s.title}
+                className="flex flex-col items-center rounded-2xl px-6 py-8 text-center"
+                style={{ backgroundColor: s.bg }}
+              >
+                <img
+                  src={s.icon}
+                  alt=""
+                  aria-hidden
+                  className="h-12 w-12 object-contain"
+                />
+                <h3
+                  className={`mt-3 font-barlow text-lg font-semibold ${
+                    s.dark ? 'text-maroon-900' : 'text-white'
+                  }`}
+                >
+                  {s.title}
+                </h3>
+                <p
+                  className={`mt-2 line-clamp-4 text-[12.5px] leading-relaxed ${
+                    s.dark ? 'text-maroon-900/80' : 'text-white/90'
+                  }`}
+                >
+                  {s.desc}
+                </p>
+                <Link
+                  href={s.href}
+                  className={`mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2 text-sm font-semibold ${
+                    s.dark ? 'text-maroon-900' : 'text-red-600'
+                  }`}
+                >
+                  {s.cta} <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ---------------- Jagajjanani TV ---------------- */}
-      <section className="bg-gradient-to-br from-maroon-700 to-maroon-900 text-cream">
-        <div className="section grid items-center gap-10 py-16 lg:grid-cols-2">
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-cream/10 ring-1 ring-gold/40">
-                <Tv className="h-6 w-6 text-gold-light" />
-              </span>
-              <h2 className="font-serif text-3xl font-bold sm:text-4xl">Jagajjanani TV</h2>
+      {/* ---------------- Jagajjanani TV ----------------
+          Deep-maroon section with a frosted glass card (#8A0000 @ ~10%) holding the
+          channel info + live player, and a faint bg-less mandala on each side. */}
+      <section
+        className="relative overflow-hidden rounded-b-[60px] text-white"
+        style={{
+          background:
+            'linear-gradient(180deg, #FFFFFF 0%, #FFF5F2 12%, rgba(221,100,20,0.62) 38%, rgba(182,12,15,0.95) 100%)',
+        }}
+      >
+        {/* bg-less white mandalas, one on each side (transparent PNG): larger,
+            pushed outward and slightly down. */}
+        <img
+          src="/images/mandala-deco.png"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute -left-32 top-[58%] hidden w-[26rem] -translate-y-1/2 opacity-90 lg:block"
+        />
+        <img
+          src="/images/mandala-deco.png"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute -right-32 top-[58%] hidden w-[26rem] -translate-y-1/2 opacity-90 lg:block"
+        />
+
+        <div className="section relative z-10 py-16">
+          {/* frosted glass card */}
+          <div
+            className="grid items-center gap-10 rounded-[28px] border border-white/15 p-8 shadow-2xl backdrop-blur-xl sm:p-10 lg:grid-cols-2 lg:p-12"
+            style={{
+              backgroundColor: 'rgba(138, 0, 0, 0.04)',
+              backgroundImage:
+                'linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 38%, rgba(255,255,255,0) 70%)',
+            }}
+          >
+            <div>
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/images/logo.png"
+                  alt="Sri Jagajjanani Ammavarla Devasthanam"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 shrink-0 object-contain"
+                />
+                <h2 className="font-barlow text-3xl font-semibold sm:text-4xl">Jagajjanani TV</h2>
+              </div>
+              <p className="mt-5 leading-relaxed text-white">
+                Jagajjanani TV is a 24×7 webcast devotional channel in Telugu which caters to the
+                people of Hindu religion. It was launched on October 2022. It is from Sri
+                Jagajjanani Devasthanam Product.
+              </p>
+              <p className="mt-3 text-sm text-white">
+                It&apos;s South India&apos;s first Sri Jagajjanani devotional channel in Telugu,
+                telecasting fiction and non-fiction programs.
+              </p>
+              <Link
+                href="/live"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-red-700 shadow-sm hover:bg-red-50"
+              >
+                <Play className="h-4 w-4" /> Watch Now
+              </Link>
             </div>
-            <p className="mt-5 leading-relaxed text-cream/85">
-              Jagajjanani TV is a 24×7 webcast devotional channel in Telugu which caters to the
-              people of Hindu religion. It was launched on October 2022. It is from Sri
-              Jagajjanani Devasthanam Product.
-            </p>
-            <p className="mt-3 text-sm text-cream/70">
-              It&apos;s South India&apos;s first Sri Jagajjanani devotional channel in Telugu —
-              telecasting fiction and non-fiction programs.
-            </p>
-            <Link href="/live" className="btn-gold mt-6">
-              <Play className="h-4 w-4" /> Watch Now
+            <div className="flex aspect-video items-center justify-center overflow-hidden rounded-2xl bg-black/80 ring-1 ring-white/15">
+              <p className="px-6 text-center text-sm text-white/70">The video is not available</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- Gallery + CTA section ----------------
+          Pure-white background with faint mandala flowers in the corners and a
+          warm linear-gradient band at the very bottom that sits above the footer. */}
+      <div className="relative overflow-hidden bg-white">
+        {/* decorative bg-less mandala flowers (per Figma placement):
+            one bottom-left near the two-card block, one on the right sitting
+            just BELOW the gallery images (beside the two-card block). */}
+        <img
+          src="/images/flower-mandala.png"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute -left-20 bottom-44 hidden w-48 opacity-50 xl:block"
+        />
+        <img
+          src="/images/flower-mandala.png"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute -right-16 top-[46%] hidden w-52 opacity-50 xl:block"
+        />
+
+        {/* Photo Gallery */}
+        <section className="relative z-10 mx-auto w-full max-w-[1500px] px-6 pt-16 sm:px-10 lg:px-16">
+          <div className="mb-8 flex items-end justify-between">
+            <div>
+              <h2 className="font-barlow text-3xl font-semibold text-red-500 sm:text-4xl">Photo Gallery</h2>
+              <p className="mt-1.5 font-barlow text-ink/60">The Beauty of Sacred Sri Jagajjanani Devasthanam</p>
+            </div>
+            <Link
+              href="/news"
+              className="hidden items-center gap-1.5 rounded-full bg-red-500 px-5 py-2 text-sm font-semibold text-white hover:bg-red-600 sm:inline-flex"
+            >
+              View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="aspect-video overflow-hidden rounded-xl2 bg-black/80 ring-1 ring-gold/20">
-            <iframe
-              src="https://www.youtube.com/embed/jfKfPfyJRdk"
-              title="Jagajjanani TV"
-              allow="encrypted-media"
-              className="h-full w-full"
+          <div className="grid auto-rows-[150px] grid-cols-2 gap-3 sm:grid-cols-4">
+            {gallery.map((g, i) => (
+              <div key={i} className={`group relative overflow-hidden rounded-xl shadow-card ${g.span}`}>
+                <img src={g.src} alt="" loading="lazy" className="h-full w-full object-cover transition-transform group-hover:scale-105" />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Two CTA cards inside one wide meander frame (Group 74 from Figma).
+            Aspect ratio 1093:362 keeps the two 427x275 halves proportional. */}
+        <section className="relative z-10 mx-auto w-full max-w-[980px] px-5 pb-24 pt-14 sm:px-8">
+          <div className="relative w-full" style={{ aspectRatio: '1093 / 362' }}>
+            {/* outer wide meander border fills the whole block; its drawn border
+                lines sit ~9% in from the edges, so the cards below are inset to that
+                line and the art appears as a frame AROUND the two cards. */}
+            <img
+              src="/images/cards-outer-frame.svg"
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-10 h-full w-full p-[0.8%]"
             />
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- Photo Gallery ---------------- */}
-      <section className="section py-16">
-        <div className="mb-8 flex items-end justify-between">
-          <div>
-            <h2 className="font-serif text-3xl font-bold text-red-500 sm:text-4xl">Photo Gallery</h2>
-            <p className="mt-2 text-ink/60">The Beauty of Sacred Sri Jagajjanani Devasthanam</p>
-          </div>
-          <Link href="/news" className="hidden btn-outline px-4 py-2 text-sm sm:inline-flex">View All</Link>
-        </div>
-        <div className="grid auto-rows-[150px] grid-cols-2 gap-3 sm:grid-cols-4">
-          {gallery.map((g, i) => (
-            <div key={i} className={`group relative overflow-hidden rounded-xl shadow-card ${g.span}`}>
-              <img src={g.src} alt="" loading="lazy" className="h-full w-full object-cover transition-transform group-hover:scale-105" />
+            {/* the two equal cards (cream | red), inset further inside the frame
+                with a gap between them so they don't touch. */}
+            <div
+              className="absolute grid grid-cols-2 gap-6"
+              style={{ top: '16%', bottom: '16%', left: '13%', right: '13%' }}
+            >
+              <CtaCard
+                title="Seva & Darshanam"
+                href="/poojas"
+                variant="cream"
+                icon="/images/icon-homam-line.png"
+              />
+              <CtaCard
+                title="Main Offerings"
+                href="/donate"
+                variant="red"
+                icon="/images/icon-rings-line.png"
+              />
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* ---------------- Two CTA panels (Group 74 from Figma) ---------------- */}
-      <section className="section pb-20">
-        <div className="grid gap-6 sm:grid-cols-2">
-          <CtaPanel
-            title="Seva & Darshanam"
-            href="/poojas"
-            variant="cream"
-            icon="/images/icon-homam-maroon.png"
-            frame="/images/frame-red.png"
-          />
-          <CtaPanel
-            title="Main Offerings"
-            href="/donate"
-            variant="red"
-            icon="/images/icon-rings.png"
-            frame="/images/frame-white.png"
-          />
-        </div>
-      </section>
+      </div>
     </>
   );
 }
 
-function CtaPanel({
-  title, href, variant, icon, frame,
+function CtaCard({
+  title, href, variant, icon,
 }: {
-  title: string; href: string; variant: 'cream' | 'red'; icon: string; frame: string;
+  title: string; href: string; variant: 'cream' | 'red'; icon: string;
 }) {
   const isRed = variant === 'red';
+  // The light inner frame goes on the dark (red) card; the dark inner frame
+  // goes on the light (cream) card.
+  const innerFrame = isRed ? '/images/card-inner-light.svg' : '/images/card-inner-dark.svg';
   return (
-    <div className={`relative overflow-hidden rounded-xl2 ${isRed ? 'bg-red-500' : 'bg-sand'}`}>
-      {/* decorative meander border frame artwork */}
-      <img src={frame} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-fill p-1 opacity-90" />
-      <div className="relative flex flex-col items-center px-8 py-12 text-center">
-        <img src={icon} alt="" className="h-14 w-14 object-contain" />
-        <h3 className={`mt-4 font-serif text-2xl font-bold ${isRed ? 'text-cream' : 'text-maroon-800'}`}>{title}</h3>
+    <div
+      className="relative flex h-full w-full items-center justify-center overflow-hidden"
+      style={{ backgroundColor: isRed ? '#B21A1A' : '#FFE1B8' }}
+    >
+      {/* per-card inner meander border */}
+      <img
+        src={innerFrame}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full object-fill p-[3%]"
+      />
+      <div className="relative flex flex-col items-center px-6 text-center">
+        <img
+          src={icon}
+          alt=""
+          className={`h-12 w-12 object-contain sm:h-14 sm:w-14 ${isRed ? '' : 'brightness-0 opacity-80'}`}
+        />
+        <h3 className={`mt-3 font-barlow text-lg font-semibold sm:text-2xl ${isRed ? 'text-white' : 'text-maroon-800'}`}>
+          {title}
+        </h3>
         <Link
           href={href}
-          className={`mt-5 inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold ${
-            isRed ? 'bg-cream text-red-600 hover:bg-white' : 'bg-white text-red-600 hover:bg-red-50'
-          }`}
+          className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2 text-sm font-semibold text-red-600 shadow-sm hover:bg-red-50"
         >
           View <ArrowRight className="h-4 w-4" />
         </Link>

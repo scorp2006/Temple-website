@@ -1,16 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { Loader2, ScanLine, TicketPlus, CalendarDays } from 'lucide-react';
-import { useAuth } from '@/lib/useAuth';
-import { DashboardShell, Panel } from '@/components/dashboard/DashboardShell';
-import { staffNav } from '@/components/dashboard/staffNav';
+import { ScanLine, TicketPlus, CalendarDays } from 'lucide-react';
+import { useConsoleUser } from '@/components/dashboard/ConsoleLayout';
 
 export default function StaffHome() {
-  const { user, loading } = useAuth(['STAFF', 'ADMIN']);
-
-  if (loading || !user)
-    return <div className="flex min-h-screen items-center justify-center bg-slate-50"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
+  const user = useConsoleUser();
 
   const actions = [
     { href: '/staff/scan', icon: ScanLine, title: 'Scan Ticket', desc: 'Verify a devotee’s QR e-ticket at the venue' },
@@ -19,7 +14,7 @@ export default function StaffHome() {
   ];
 
   return (
-    <DashboardShell user={user} nav={staffNav} title="Volunteer">
+    
       <div className="space-y-6">
         <div>
           <h2 className="mb-1 text-xl font-semibold text-slate-800">Namaste, {user.name.split(' ')[0]} 🙏</h2>
@@ -37,6 +32,6 @@ export default function StaffHome() {
           ))}
         </div>
       </div>
-    </DashboardShell>
+    
   );
 }

@@ -2,14 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { Loader2, Printer } from 'lucide-react';
-import { useAuth } from '@/lib/useAuth';
 import { api } from '@/lib/api';
 import { formatDateTime } from '@/lib/format';
-import { DashboardShell, Panel } from '@/components/dashboard/DashboardShell';
-import { staffNav } from '@/components/dashboard/staffNav';
+import { Panel } from '@/components/dashboard/DashboardShell';
 
 export default function StaffSpot() {
-  const { user, loading } = useAuth(['STAFF', 'ADMIN']);
   const [poojas, setPoojas] = useState<any[]>([]);
   const [poojaId, setPoojaId] = useState('');
   const [slots, setSlots] = useState<any[]>([]);
@@ -20,7 +17,7 @@ export default function StaffSpot() {
   const [ticket, setTicket] = useState<{ id: string; qrToken: string | null; pooja: string } | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
-  useEffect(() => { if (user) api<any[]>('/poojas').then(setPoojas).catch(() => {}); }, [user]);
+  useEffect(() => { api<any[]>('/poojas').then(setPoojas).catch(() => {}); }, []);
   useEffect(() => { if (poojaId) api<any[]>(`/poojas/${poojaId}/slots`).then(setSlots).catch(() => setSlots([])); }, [poojaId]);
 
   async function createSpot() {
@@ -35,11 +32,8 @@ export default function StaffSpot() {
     finally { setBusy(false); }
   }
 
-  if (loading || !user)
-    return <div className="flex min-h-screen items-center justify-center bg-slate-50"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
-
   return (
-    <DashboardShell user={user} nav={staffNav} title="Volunteer">
+    
       <div className="max-w-xl">
         {ticket ? (
           <Panel title="Ticket Created">
@@ -84,6 +78,6 @@ export default function StaffSpot() {
           </Panel>
         )}
       </div>
-    </DashboardShell>
+    
   );
 }

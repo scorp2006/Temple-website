@@ -45,10 +45,18 @@ const config: Config = {
         sand: '#FBEAD2',
         clay: '#EAD3B5',
         ink: '#3A2A22',
+        // Footer palette (designer-specified) — scoped to the footer for now.
+        footer: {
+          bg: '#EFEFEF',   // light grey footer background
+          red: '#9D0208',  // red headings / accents
+          ink: '#181818',  // dark text / links
+          art: '#5F2328',  // mandala border art
+        },
       },
       fontFamily: {
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        barlow: ['var(--font-barlow)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         soft: '0 6px 24px -10px rgba(122, 16, 32, 0.22)',

@@ -1,18 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Loader2, Plus, Trash2 } from 'lucide-react';
-import { useAuth } from '@/lib/useAuth';
+import { Plus, Trash2 } from 'lucide-react';
 import { api } from '@/lib/api';
 import { formatDateTime } from '@/lib/format';
-import { DashboardShell, Panel } from '@/components/dashboard/DashboardShell';
+import { Panel } from '@/components/dashboard/DashboardShell';
 import { DataTable } from '@/components/dashboard/Table';
-import { adminNav } from '@/components/dashboard/adminNav';
 
 interface News { id: string; title: string; body: string; isPublished: boolean; publishedAt: string; }
 
 export default function AdminNews() {
-  const { user, loading } = useAuth(['ADMIN']);
   const [rows, setRows] = useState<News[]>([]);
   const [busy, setBusy] = useState(true);
   const [form, setForm] = useState({ title: '', body: '' });
@@ -20,7 +17,7 @@ export default function AdminNews() {
   const [msg, setMsg] = useState<string | null>(null);
 
   const load = () => { setBusy(true); api<News[]>('/news?all=true', { auth: true }).then(setRows).catch(() => {}).finally(() => setBusy(false)); };
-  useEffect(() => { if (user) load(); }, [user]);
+  useEffect(() => { load(); }, []);
 
   async function publish() {
     try {
@@ -32,11 +29,8 @@ export default function AdminNews() {
     try { await api(`/news/${id}`, { method: 'DELETE', auth: true }); load(); } catch (e) { setMsg((e as Error).message); }
   }
 
-  if (loading || !user)
-    return <div className="flex min-h-screen items-center justify-center bg-slate-50"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
-
   return (
-    <DashboardShell user={user} nav={adminNav} title="Admin">
+    
       <Panel
         title="News & Announcements"
         action={<button onClick={() => setShowForm((s) => !s)} className="inline-flex items-center gap-1.5 rounded-lg bg-red-500 px-3 py-2 text-sm font-semibold text-white hover:bg-red-600"><Plus className="h-4 w-4" /> New Post</button>}
@@ -62,6 +56,6 @@ export default function AdminNews() {
           ]}
         />
       </Panel>
-    </DashboardShell>
+    
   );
 }

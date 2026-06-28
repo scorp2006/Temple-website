@@ -1,13 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Loader2, Plus, UserPlus } from 'lucide-react';
-import { useAuth } from '@/lib/useAuth';
+import { Plus, UserPlus } from 'lucide-react';
 import { api } from '@/lib/api';
 import { formatDateTime } from '@/lib/format';
-import { DashboardShell, Panel } from '@/components/dashboard/DashboardShell';
+import { Panel } from '@/components/dashboard/DashboardShell';
 import { DataTable } from '@/components/dashboard/Table';
-import { adminNav } from '@/components/dashboard/adminNav';
 
 interface Event {
   id: string; title: string; location?: string; startTime: string; endTime: string;
@@ -16,7 +14,6 @@ interface Event {
 interface Staff { id: string; name: string; }
 
 export default function AdminEvents() {
-  const { user, loading } = useAuth(['ADMIN']);
   const [events, setEvents] = useState<Event[]>([]);
   const [staff, setStaff] = useState<Staff[]>([]);
   const [busy, setBusy] = useState(true);
@@ -31,7 +28,7 @@ export default function AdminEvents() {
       api<Staff[]>('/auth/staff', { auth: true }).then(setStaff).catch(() => {}),
     ]).finally(() => setBusy(false));
   };
-  useEffect(() => { if (user) load(); }, [user]);
+  useEffect(() => { load(); }, []);
 
   async function createEvent() {
     setMsg(null);
@@ -54,11 +51,8 @@ export default function AdminEvents() {
     catch (e) { setMsg((e as Error).message); }
   }
 
-  if (loading || !user)
-    return <div className="flex min-h-screen items-center justify-center bg-slate-50"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
-
   return (
-    <DashboardShell user={user} nav={adminNav} title="Admin">
+    
       <Panel
         title="Events"
         action={<button onClick={() => setShowForm((s) => !s)} className="inline-flex items-center gap-1.5 rounded-lg bg-red-500 px-3 py-2 text-sm font-semibold text-white hover:bg-red-600"><Plus className="h-4 w-4" /> New Event</button>}
@@ -93,6 +87,6 @@ export default function AdminEvents() {
           ]}
         />
       </Panel>
-    </DashboardShell>
+    
   );
 }

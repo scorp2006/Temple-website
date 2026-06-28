@@ -51,9 +51,9 @@ export function Header() {
   const dashHref = user?.role === 'ADMIN' ? '/admin' : user?.role === 'STAFF' ? '/staff' : '/';
 
   return (
-    <header className="sticky top-0 z-50 bg-page shadow-card">
+    <header className="sticky top-0 z-50 bg-white shadow-card">
       {/* ---------- Top utility bar ---------- */}
-      <div className="bg-red-500 text-cream">
+      <div className="rounded-b-2xl bg-red-500 text-cream">
         <div className="section flex items-center justify-between py-1.5 text-xs">
           <span className="hidden sm:block">{now}</span>
           <span className="sm:hidden">ॐ श्री जगज्जनन्यै नमः</span>

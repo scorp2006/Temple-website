@@ -1,17 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Loader2, UserPlus } from 'lucide-react';
-import { useAuth } from '@/lib/useAuth';
+import { UserPlus } from 'lucide-react';
 import { api } from '@/lib/api';
-import { DashboardShell, Panel } from '@/components/dashboard/DashboardShell';
+import { Panel } from '@/components/dashboard/DashboardShell';
 import { DataTable } from '@/components/dashboard/Table';
-import { adminNav } from '@/components/dashboard/adminNav';
 
 interface Staff { id: string; name: string; email?: string; phone?: string; role: string; }
 
 export default function AdminStaff() {
-  const { user, loading } = useAuth(['ADMIN']);
   const [rows, setRows] = useState<Staff[]>([]);
   const [busy, setBusy] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -19,7 +16,7 @@ export default function AdminStaff() {
   const [msg, setMsg] = useState<string | null>(null);
 
   const load = () => { setBusy(true); api<Staff[]>('/auth/staff', { auth: true }).then(setRows).catch(() => {}).finally(() => setBusy(false)); };
-  useEffect(() => { if (user) load(); }, [user]);
+  useEffect(() => { load(); }, []);
 
   async function createStaff() {
     setMsg(null);
@@ -34,11 +31,8 @@ export default function AdminStaff() {
     catch (e) { setMsg((e as Error).message); }
   }
 
-  if (loading || !user)
-    return <div className="flex min-h-screen items-center justify-center bg-slate-50"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
-
   return (
-    <DashboardShell user={user} nav={adminNav} title="Admin">
+    
       <Panel
         title="Staff & Volunteers"
         action={<button onClick={() => setShowForm((s) => !s)} className="inline-flex items-center gap-1.5 rounded-lg bg-red-500 px-3 py-2 text-sm font-semibold text-white hover:bg-red-600"><UserPlus className="h-4 w-4" /> Add Volunteer</button>}
@@ -71,6 +65,6 @@ export default function AdminStaff() {
           ]}
         />
       </Panel>
-    </DashboardShell>
+    
   );
 }

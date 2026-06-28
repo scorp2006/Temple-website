@@ -1,19 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Loader2, Plus, CalendarPlus } from 'lucide-react';
-import { useAuth } from '@/lib/useAuth';
+import { Plus, CalendarPlus } from 'lucide-react';
 import { api } from '@/lib/api';
 import { formatINR, formatDateTime } from '@/lib/format';
-import { DashboardShell, Panel } from '@/components/dashboard/DashboardShell';
+import { Panel } from '@/components/dashboard/DashboardShell';
 import { DataTable } from '@/components/dashboard/Table';
-import { adminNav } from '@/components/dashboard/adminNav';
 
 interface Pooja { id: string; name: string; basePrice: number; isSpecial: boolean; isActive: boolean; }
 interface Slot { id: string; startTime: string; capacity: number; booked: number; price: number; }
 
 export default function AdminPoojas() {
-  const { user, loading } = useAuth(['ADMIN']);
   const [poojas, setPoojas] = useState<Pooja[]>([]);
   const [busy, setBusy] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -33,7 +30,7 @@ export default function AdminPoojas() {
     setBusy(true);
     api<Pooja[]>('/poojas?all=true', { auth: true }).then(setPoojas).catch(() => {}).finally(() => setBusy(false));
   };
-  useEffect(() => { if (user) load(); }, [user]);
+  useEffect(() => { load(); }, []);
 
   const loadSlots = (p: Pooja) => {
     setSelected(p);
@@ -63,11 +60,8 @@ export default function AdminPoojas() {
     } catch (e) { setBulkMsg((e as Error).message); }
   }
 
-  if (loading || !user)
-    return <div className="flex min-h-screen items-center justify-center bg-slate-50"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
-
   return (
-    <DashboardShell user={user} nav={adminNav} title="Admin">
+    
       <div className="space-y-6">
         {msg && <p className="rounded-lg bg-slate-100 p-3 text-sm text-slate-700">{msg}</p>}
 
@@ -133,6 +127,6 @@ export default function AdminPoojas() {
           </Panel>
         )}
       </div>
-    </DashboardShell>
+    
   );
 }

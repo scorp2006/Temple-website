@@ -1,13 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Loader2 } from 'lucide-react';
-import { useAuth } from '@/lib/useAuth';
 import { api } from '@/lib/api';
 import { formatINR, formatDateTime } from '@/lib/format';
-import { DashboardShell, Panel } from '@/components/dashboard/DashboardShell';
+import { Panel } from '@/components/dashboard/DashboardShell';
 import { DataTable, StatusBadge } from '@/components/dashboard/Table';
-import { adminNav } from '@/components/dashboard/adminNav';
 
 interface Booking {
   id: string;
@@ -24,27 +21,21 @@ interface Booking {
 const FILTERS = ['ALL', 'PENDING_PAYMENT', 'CONFIRMED', 'CHECKED_IN', 'CANCELLED', 'EXPIRED'];
 
 export default function AdminBookings() {
-  const { user, loading } = useAuth(['ADMIN']);
   const [rows, setRows] = useState<Booking[]>([]);
   const [busy, setBusy] = useState(true);
   const [filter, setFilter] = useState('ALL');
 
   useEffect(() => {
-    if (!user) return;
     setBusy(true);
     const q = filter === 'ALL' ? '' : `?status=${filter}`;
     api<Booking[]>(`/bookings${q}`, { auth: true })
       .then(setRows)
       .catch(() => setRows([]))
       .finally(() => setBusy(false));
-  }, [user, filter]);
-
-  if (loading || !user)
-    return <div className="flex min-h-screen items-center justify-center bg-slate-50"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
+  }, [filter]);
 
   return (
-    <DashboardShell user={user} nav={adminNav} title="Admin">
-      <Panel
+    <Panel
         title="Pooja Bookings"
         action={
           <select value={filter} onChange={(e) => setFilter(e.target.value)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-sm">
@@ -68,6 +59,5 @@ export default function AdminBookings() {
           ]}
         />
       </Panel>
-    </DashboardShell>
   );
 }

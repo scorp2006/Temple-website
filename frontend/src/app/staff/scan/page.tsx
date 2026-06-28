@@ -2,14 +2,11 @@
 
 import { useState } from 'react';
 import { Loader2, CheckCircle2, XCircle, ScanLine } from 'lucide-react';
-import { useAuth } from '@/lib/useAuth';
 import { api } from '@/lib/api';
 import { formatDateTime } from '@/lib/format';
-import { DashboardShell, Panel } from '@/components/dashboard/DashboardShell';
-import { staffNav } from '@/components/dashboard/staffNav';
+import { Panel } from '@/components/dashboard/DashboardShell';
 
 export default function StaffScan() {
-  const { user, loading } = useAuth(['STAFF', 'ADMIN']);
   const [token, setToken] = useState('');
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<{ ok: boolean; msg: string; booking?: any } | null>(null);
@@ -27,11 +24,8 @@ export default function StaffScan() {
     } finally { setBusy(false); setToken(''); }
   }
 
-  if (loading || !user)
-    return <div className="flex min-h-screen items-center justify-center bg-slate-50"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
-
   return (
-    <DashboardShell user={user} nav={staffNav} title="Volunteer">
+    
       <div className="max-w-xl">
         <Panel title="Scan / Verify Ticket">
           <p className="mb-4 text-sm text-slate-500">
@@ -57,6 +51,6 @@ export default function StaffScan() {
           )}
         </Panel>
       </div>
-    </DashboardShell>
+    
   );
 }

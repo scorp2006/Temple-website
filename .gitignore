@@ -26,3 +26,8 @@ Thumbs.db
 refimages/
 prd_text.txt
 *.tmp
+
+# Scratch screenshots / Playwright captures (dev-only, not app assets)
+.playwright-mcp/
+/*.jpeg
+/*.jpg
