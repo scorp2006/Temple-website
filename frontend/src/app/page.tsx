@@ -85,7 +85,7 @@ export default function HomePage() {
       </section>
 
       {/* ---------------- Temple News bar ---------------- */}
-      <section className="border-b border-red-100 bg-white dark:border-transparent dark:bg-night-900">
+      <section className="border-b border-red-100 bg-page dark:border-transparent dark:bg-night-900">
         <div className="section flex items-center gap-5 py-3">
           <span className="flex shrink-0 items-center gap-5 font-barlow text-base font-medium text-ink/80 dark:text-sacredgold-light">
             Temple News
@@ -107,9 +107,7 @@ export default function HomePage() {
       {/* ---------------- About + service cards ----------------
           One shared padded container so the About block and the 4-card row align
           and neither sticks to the screen edges. */}
-      <section className="relative bg-white pb-16 dark:bg-night-900">
-        {/* faint gold mandala glow watermark behind the About block (dark only) */}
-        <div aria-hidden className="gold-glow pointer-events-none absolute right-0 top-10 hidden h-[480px] w-[480px] dark:block" />
+      <section className="relative bg-page pb-16 dark:bg-night-900">
         <div className="relative mx-auto w-full max-w-[1500px] px-6 sm:px-10 lg:px-16">
           {/* About: text on the left, goddess + lion line-art on the right */}
           <div className="grid items-center gap-10 pt-16 lg:grid-cols-2">
@@ -152,19 +150,24 @@ export default function HomePage() {
           {/* 4 service cards: aligned with the About block above, with rounded
               corners. peach -> deep-red across the row; descriptions line-clamped
               so the cards stay compact and even. */}
-          <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
               <div
                 key={s.title}
-                className="group flex flex-col items-center rounded-2xl px-6 py-8 text-center [background-color:var(--card-bg)] dark:!bg-night-700"
+                className="group flex flex-col items-center rounded-2xl px-6 py-8 text-center [background-color:var(--card-bg)] dark:!bg-transparent dark:glass-dark"
                 style={{ ['--card-bg' as string]: s.bg }}
               >
-                {/* gold-tinted icon in dark mode */}
+                {/* icon: original art in light mode, metallic-gold masked in dark */}
                 <img
                   src={s.icon}
                   alt=""
                   aria-hidden
-                  className="h-12 w-12 object-contain dark:[filter:brightness(0)_invert(1)_sepia(1)_saturate(320%)_hue-rotate(2deg)_brightness(0.95)]"
+                  className="h-12 w-12 object-contain dark:hidden"
+                />
+                <span
+                  aria-hidden
+                  className="gold-art hidden h-12 w-12 dark:block"
+                  style={{ WebkitMaskImage: `url(${s.icon})`, maskImage: `url(${s.icon})` }}
                 />
                 <h3
                   className={`mt-3 font-barlow text-lg font-semibold dark:gold-text ${
@@ -264,7 +267,7 @@ export default function HomePage() {
       {/* ---------------- Gallery + CTA section ----------------
           Pure-white background with faint mandala flowers in the corners and a
           warm linear-gradient band at the very bottom that sits above the footer. */}
-      <div className="relative overflow-hidden bg-white dark:bg-night-900">
+      <div className="relative overflow-hidden bg-page dark:bg-night-900">
         {/* decorative bg-less mandala flowers (per Figma placement):
             one bottom-left near the two-card block, one on the right sitting
             just BELOW the gallery images (beside the two-card block). */}
@@ -304,37 +307,34 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Two CTA cards inside one wide meander frame (Group 74 from Figma).
-            Aspect ratio 1093:362 keeps the two 427x275 halves proportional. */}
-        <section className="relative z-10 mx-auto w-full max-w-[980px] px-5 pb-24 pt-14 sm:px-8">
-          <div className="relative w-full" style={{ aspectRatio: '1093 / 362' }}>
-            {/* outer wide meander border fills the whole block; its drawn border
-                lines sit ~9% in from the edges, so the cards below are inset to that
-                line and the art appears as a frame AROUND the two cards. */}
+        {/* Two CTA cards (Group 74 from Figma).
+            Mobile: simple stacked cards. sm+: one wide meander frame wrapping both,
+            with the cards inset to sit inside the frame's drawn border. */}
+        <section className="relative z-10 mx-auto w-full max-w-[980px] px-5 pb-20 pt-14 sm:px-8 sm:pb-24">
+          {/* Mobile (no outer frame): two stacked cards */}
+          <div className="grid grid-cols-1 gap-5 sm:hidden">
+            <div className="h-56">
+              <CtaCard title="Seva & Darshanam" href="/poojas" variant="cream" icon="/images/icon-homam-line.png" />
+            </div>
+            <div className="h-56">
+              <CtaCard title="Main Offerings" href="/donate" variant="red" icon="/images/icon-rings-line.png" />
+            </div>
+          </div>
+
+          {/* sm+ : framed two-up layout */}
+          <div className="relative hidden w-full sm:block" style={{ aspectRatio: '1093 / 362' }}>
             <img
               src="/images/cards-outer-frame.svg"
               alt=""
               aria-hidden
               className="pointer-events-none absolute inset-0 z-10 h-full w-full p-[0.8%] dark:[filter:sepia(1)_saturate(450%)_hue-rotate(5deg)_brightness(1.15)]"
             />
-            {/* the two equal cards (cream | red), inset further inside the frame
-                with a gap between them so they don't touch. */}
             <div
               className="absolute grid grid-cols-2 gap-6"
               style={{ top: '16%', bottom: '16%', left: '13%', right: '13%' }}
             >
-              <CtaCard
-                title="Seva & Darshanam"
-                href="/poojas"
-                variant="cream"
-                icon="/images/icon-homam-line.png"
-              />
-              <CtaCard
-                title="Main Offerings"
-                href="/donate"
-                variant="red"
-                icon="/images/icon-rings-line.png"
-              />
+              <CtaCard title="Seva & Darshanam" href="/poojas" variant="cream" icon="/images/icon-homam-line.png" />
+              <CtaCard title="Main Offerings" href="/donate" variant="red" icon="/images/icon-rings-line.png" />
             </div>
           </div>
         </section>
@@ -355,7 +355,7 @@ function CtaCard({
   const innerFrame = isRed ? '/images/card-inner-light.svg' : '/images/card-inner-dark.svg';
   return (
     <div
-      className="relative flex h-full w-full items-center justify-center overflow-hidden [background-color:var(--cta-bg)] dark:!bg-night-700"
+      className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl [background-color:var(--cta-bg)] dark:!bg-transparent dark:glass-dark"
       style={{ ['--cta-bg' as string]: isRed ? '#B21A1A' : '#FFE1B8' }}
     >
       {/* per-card inner meander border. Light mode keeps the per-variant frame.

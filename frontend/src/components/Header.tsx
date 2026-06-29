@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import {
-  Menu, X, Tv, Search, UserCircle, Heart, LogOut, LayoutDashboard, Sun, Moon,
+  Menu, X, Tv, Search, UserCircle, LogOut, LayoutDashboard, Sun, Moon,
 } from 'lucide-react';
 import { useI18n, LANGS, Lang } from '@/lib/i18n';
 import { useTheme } from '@/lib/theme';
@@ -53,7 +53,7 @@ export function Header() {
   const dashHref = user?.role === 'ADMIN' ? '/admin' : user?.role === 'STAFF' ? '/staff' : '/';
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-card dark:bg-night-950 dark:shadow-none">
+    <header className="sticky top-0 z-50 bg-page shadow-card dark:bg-night-950 dark:shadow-none">
       {/* ---------- Top utility bar ---------- */}
       <div className="rounded-b-2xl bg-red-500 text-cream dark:bg-night-800 dark:text-parchment/80">
         <div className="section flex items-center justify-between py-1.5 text-xs">
@@ -111,7 +111,7 @@ export function Header() {
         {/* Center nav (desktop) */}
         <nav className="hidden items-center gap-1 xl:flex">
           {links.map((l, i) => (
-            <Link key={i} href={l.href} className="rounded-md px-3 py-2 text-sm font-medium text-ink/80 hover:text-red-600 dark:text-parchment/85 dark:hover:text-sacredgold-light">
+            <Link key={i} href={l.href} className="rounded-md px-3 py-2 text-sm font-medium text-[#7A1020] hover:text-red-600 dark:text-parchment/85 dark:hover:text-sacredgold-light">
               {l.label}
             </Link>
           ))}
@@ -119,8 +119,8 @@ export function Header() {
 
         {/* Right cluster */}
         <div className="flex items-center gap-3">
-          <Link href="/donate" className="hidden items-center gap-1.5 text-sm font-medium text-ink/80 hover:text-red-600 dark:text-parchment/85 dark:hover:text-sacredgold-light lg:flex">
-            <Heart className="h-4 w-4" /> Volunteer
+          <Link href="/donate" className="hidden items-center text-sm font-medium text-[#7A1020] hover:text-red-600 dark:text-parchment/85 dark:hover:text-sacredgold-light lg:flex">
+            Volunteer
           </Link>
           <button className="hidden rounded-full p-1.5 text-ink/70 hover:text-red-600 dark:text-parchment/70 dark:hover:text-sacredgold-light lg:block" aria-label="Search">
             <Search className="h-5 w-5" />
