@@ -202,7 +202,7 @@ export default function HomePage() {
           channel info + live player, and a faint bg-less mandala on each side. */}
       <section
         className="relative overflow-hidden rounded-b-[60px] text-white
-          [background:linear-gradient(180deg,#FFFFFF_0%,#FFF5F2_12%,rgba(221,100,20,0.62)_38%,rgba(182,12,15,0.95)_100%)]
+          [background:linear-gradient(180deg,#FFF7EC_0%,#FFF1E8_12%,rgba(221,100,20,0.62)_38%,rgba(182,12,15,0.95)_100%)]
           dark:[background:linear-gradient(180deg,#0D0B09_0%,#2A0C08_50%,#4A0A0A_100%)]"
       >
         {/* bg-less white mandalas, one on each side (transparent PNG): larger,
