@@ -116,14 +116,14 @@ export default function HomePage() {
               <h2 className="mt-1 font-barlow text-3xl font-semibold text-red-600 dark:gold-text sm:text-[2.6rem] sm:leading-tight">
                 Sri Jagajjanani Ammavaru
               </h2>
-              <div className="mt-5 max-w-xl space-y-5 font-barlow leading-relaxed text-ink/80 dark:text-parchment/85">
+              <div className="mt-5 max-w-xl space-y-5 font-barlow text-[17px] leading-relaxed text-ink/80 dark:text-white">
                 <p>
                   Sri Jagajjanani of Nandyal is the creator of the universe. In the early days of
                   creation, Ammavaru manifested herself in the Himalayan mountains of Jammu and
                   Kashmir, India, at an altitude of 19,500 feet above sea level. From there, she
                   became known throughout the world as the all-pervading divine force behind creation.
                 </p>
-                <p className="text-sm text-ink/70 dark:text-parchment/65">
+                <p className="text-[15px] text-ink/70 dark:text-white">
                   Lake Manasarovar was located close to the temple. Our mythological texts and Vedas
                   state that all three deities bathed in this lake during Brahma Muhurta and visited
                   the Goddess.
@@ -154,7 +154,7 @@ export default function HomePage() {
             {services.map((s) => (
               <div
                 key={s.title}
-                className="group flex flex-col items-center rounded-2xl px-6 py-8 text-center [background-color:var(--card-bg)] dark:!bg-transparent dark:glass-dark"
+                className="group flex flex-col items-center rounded-2xl px-6 py-8 text-center [background-color:var(--card-bg)] dark:glass-dark"
                 style={{ ['--card-bg' as string]: s.bg }}
               >
                 {/* icon: original art in light mode, metallic-gold masked in dark */}
@@ -177,7 +177,7 @@ export default function HomePage() {
                   {s.title}
                 </h3>
                 <p
-                  className={`mt-2 line-clamp-4 text-[12.5px] leading-relaxed dark:!text-parchment/70 ${
+                  className={`mt-2 line-clamp-4 text-[13.5px] leading-relaxed dark:!text-white ${
                     s.dark ? 'text-maroon-900/80' : 'text-white/90'
                   }`}
                 >
@@ -289,7 +289,7 @@ export default function HomePage() {
           <div className="mb-8 flex items-end justify-between">
             <div>
               <h2 className="font-barlow text-3xl font-semibold text-red-500 dark:gold-text sm:text-4xl">Photo Gallery</h2>
-              <p className="mt-1.5 font-barlow text-ink/60 dark:text-parchment/60">The Beauty of Sacred Sri Jagajjanani Devasthanam</p>
+              <p className="mt-1.5 font-barlow text-ink/60 dark:text-parchment/80">The Beauty of Sacred Sri Jagajjanani Devasthanam</p>
             </div>
             <Link
               href="/news"
@@ -355,7 +355,7 @@ function CtaCard({
   const innerFrame = isRed ? '/images/card-inner-light.svg' : '/images/card-inner-dark.svg';
   return (
     <div
-      className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl [background-color:var(--cta-bg)] dark:!bg-transparent dark:glass-dark"
+      className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl [background-color:var(--cta-bg)] dark:glass-dark"
       style={{ ['--cta-bg' as string]: isRed ? '#B21A1A' : '#FFE1B8' }}
     >
       {/* per-card inner meander border. Light mode keeps the per-variant frame.

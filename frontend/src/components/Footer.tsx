@@ -94,7 +94,7 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5 text-sm">
                 {col.links.map(([label, href]) => (
                   <li key={label}>
-                    <Link href={href} className="text-footer-ink/80 transition-colors hover:text-footer-red dark:text-parchment/70 dark:hover:text-sacredgold-light">
+                    <Link href={href} className="text-footer-ink/80 transition-colors hover:text-footer-red dark:text-parchment/90 dark:hover:text-sacredgold-light">
                       {label}
                     </Link>
                   </li>
@@ -132,8 +132,8 @@ export function Footer() {
 
       {/* bottom bar */}
       <div className="border-t border-footer-ink/10 dark:border-parchment/10">
-        <div className="mx-auto flex w-full max-w-[1600px] flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-footer-ink/70 dark:text-parchment/65 sm:flex-row sm:px-6 lg:px-10 xl:px-14">
-          <div className="flex gap-4 text-footer-ink/80 dark:text-parchment/70">
+        <div className="mx-auto flex w-full max-w-[1600px] flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-footer-ink/70 dark:text-parchment/90 sm:flex-row sm:px-6 lg:px-10 xl:px-14">
+          <div className="flex gap-4 text-footer-ink/80 dark:text-parchment/90">
             <Link href="#" aria-label="Facebook"><Facebook className="h-5 w-5 transition-colors hover:text-footer-red dark:hover:text-sacredgold-light" /></Link>
             <Link href="#" aria-label="Instagram"><Instagram className="h-5 w-5 transition-colors hover:text-footer-red dark:hover:text-sacredgold-light" /></Link>
             <Link href="#" aria-label="YouTube"><Youtube className="h-5 w-5 transition-colors hover:text-footer-red dark:hover:text-sacredgold-light" /></Link>

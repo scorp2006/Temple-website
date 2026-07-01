@@ -19,12 +19,12 @@ const config: Config = {
         },
         // Dark accent — solid metallic gold on the near-black base.
         sacredgold: {
-          DEFAULT: '#D9A93B',
-          light: '#E9C46A', // brightest, for text on dark
-          mid: '#D9A93B',
+          DEFAULT: '#E9C46A', // brighter gold for readable accents on dark
+          light: '#F3D888', // brightest, for text/hover on dark
+          mid: '#E9C46A',
           deep: '#C99A3B',
         },
-        parchment: '#EDE4D3', // warm cream text on dark
+        parchment: '#FFFFFF', // pure white body text on dark (max readability)
         // Red ramp built around the client's exact primary red #B21A1A
         red: {
           50: '#F7DCDC',
